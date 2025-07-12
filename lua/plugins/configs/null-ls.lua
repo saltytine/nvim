@@ -8,7 +8,6 @@
 --
 -- File: plugins/configs/null-ls.lua
 -- Description: null-ls configuration
--- Author: Kien Nguyen-Tuan <kiennt2609@gmail.com>
 local null_ls = require "null-ls"
 
 -- Load custom configurations
@@ -17,6 +16,6 @@ local sources = exist and type(custom) == "table" and custom.setup_sources and c
     or {}
 
 null_ls.setup {
-    debug = false,
-    sources = sources,
+  debug = false,
+  sources = sources,
 }
