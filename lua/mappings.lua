@@ -44,6 +44,8 @@ map("n", "<leader><Up>", "gg0", {})
 map("n", "<leader><Down>", "G$", {})
 map("v", "<leader><Up>", "gg0", {})
 map("v", "<leader><Down>", "G$", {})
+map("n", "o", "a", {})
+map("n", "ii", "o", {})
 
 map("n", "<leader>=", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 map("n", "<leader>-", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
