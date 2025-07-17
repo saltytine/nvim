@@ -15,8 +15,8 @@ local utils = require "utils"
 
 local function loadcolors()
   local colors = {
-    bg      = '#1c1c1c',    -- Background
-    fg      = '#d0d0d0',    -- Foreground
+    bg      = '#262626', -- Background
+    fg      = '#d0d0d0', -- Foreground
     yellow  = '#d7af5f',
     cyan    = '#5fafd7',
     black   = '#1c1c1c',
@@ -140,7 +140,7 @@ local config = {
         "buffers",
         max_length = vim.o.columns * 2 / 3,
         show_filename_only = false,
-        mode = 0,         -- 0: Shows buffer name
+        mode = 0, -- 0: Shows buffer name
         -- 1: Shows buffer index
         -- 2: Shows buffer name + buffer index
         -- 3: Shows buffer number
@@ -157,11 +157,11 @@ local config = {
             fg = colors.fg,
             bg = colors.bg,
             gui = "bold",
-          },           -- Color for active buffer.
+          }, -- Color for active buffer.
           inactive = {
             fg = utils.darken(colors.fg, 0.3),
             bg = utils.darken(colors.bg, 0.3),
-          },           -- Color for inactive buffer.
+          }, -- Color for inactive buffer.
         },
         symbols = {
           modified = " ●", -- Text to show when the buffer is modified

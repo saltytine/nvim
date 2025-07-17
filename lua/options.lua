@@ -62,7 +62,7 @@ opt.listchars = {
 }
 
 -- Hide cmd line
-opt.cmdheight = 0      -- more space in the neovim command line for displaying messages
+opt.cmdheight = 1      -- more space in the neovim command line for displaying messages
 
 opt.mouse = "a"        -- allow the mouse to be used in neovim
 opt.number = true      -- set numbered lines
@@ -84,8 +84,7 @@ opt.shortmess = opt.shortmess + {
   c = true,
 } -- hide all the completion messages, e.g. "-- XXX completion (YYY)", "match 1 of 2", "The only match", "Pattern not found"
 
--- By the way, -- INSERT -- is unnecessary anymore because the mode information is displayed in the statusline.
-opt.showmode = false
+opt.showmode = true
 
 -- perfomance
 -- remember N lines in history
@@ -148,6 +147,7 @@ end
 cmd.colorscheme "retrobox"
 
 vim.opt.colorcolumn = ""
+vim.opt.guicursor = "n-v-c:block,i:block"
 
 -- Enable virtual_lines feature if the current nvim version is 0.11+
 if vim.fn.has "nvim-0.11" > 0 then
