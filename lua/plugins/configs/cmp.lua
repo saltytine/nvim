@@ -13,16 +13,16 @@ local cmp = require "cmp"
 require("nvim-autopairs").setup {
   check_ts = true,
   ts_config = {
-    lua = { "string" },     -- it will not add a pair on that treesitter node
+    lua = { "string" }, -- it will not add a pair on that treesitter node
     javascript = { "template_string" },
-    java = false,           -- Don't check treesitter on java
+    java = false,       -- Don't check treesitter on java
   },
 
   -- Don't add pairs if it already has a close pair in the same line
   enable_check_bracket_line = false,
 
   -- Don't add pairs if the next char is alphanumeric
-  ignored_next_char = "[%w%.]",   -- will ignore alphanumeric and `.` symbol
+  ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
   fast_wrap = {},
   disable_filetype = { "TelescopePrompt", "vim" },
 }
@@ -81,11 +81,11 @@ local options = {
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping.confirm {
+    ["<Tab>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     },
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ["<CR>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif require("luasnip").expand_or_jumpable() then
@@ -94,7 +94,7 @@ local options = {
         fallback()
       end
     end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    ["<S-CR>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif require("luasnip").jumpable(-1) then
@@ -114,7 +114,7 @@ local options = {
         get_bufnrs = function()
           local buf = vim.api.nvim_get_current_buf()
           local byte_size = vim.api.nvim_buf_get_offset(buf, vim.api.nvim_buf_line_count(buf))
-          if byte_size > 1024 * 1024 then           -- 1 Megabyte max
+          if byte_size > 1024 * 1024 then -- 1 Megabyte max
             return {}
           end
           return { buf }
