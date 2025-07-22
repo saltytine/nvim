@@ -27,6 +27,7 @@ return {
     "css",
     "vim",
     "lua",
+    "rust",
     ensure_installed,
   },
 
