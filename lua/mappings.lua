@@ -37,6 +37,7 @@ map("v", "<A-Down>", ":m '>+1<CR>gv=gv", {})
 map("n", "<C-w>", "@w", {})
 map("i", "<C-c>", "<C-c>l", {})
 map("n", "<leader>w", ":let @w = ''<CR>", {})
+map("n", "<leader>e", ":Ex<CR>", {})
 
 map("n", "<leader>=", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 map("n", "<leader>-", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
