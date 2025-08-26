@@ -5,6 +5,24 @@ local builtin_plugins = {
   { "saltytine/marked" },
   { "theprimeagen/harpoon" },
   { "tpope/vim-fugitive" },
+  {
+    "toppair/peek.nvim",
+    event = { "VeryLazy" },
+    config = function()
+      require("peek").setup({
+        filetype = { 'markdown', 'conf' }
+      })
+      vim.api.nvim_create_user_command("MDPreview", require("peek").open, {})
+      vim.api.nvim_create_user_command("MDClose", require("peek").close, {})
+    end,
+  },
+  {
+    "supermaven-inc/supermaven-nvim",
+    config = function()
+      require("supermaven-nvim").setup({})
+    end,
+  },
+
   -- File explore
   -- nvim-tree.lua - A file explorer tree for neovim written in lua
   -- {
@@ -141,13 +159,15 @@ local builtin_plugins = {
   -- which-key.nvim removed to disable keymap popup
 }
 
+local colorscheme_plugins = require("colors")
+
 local exist, custom = pcall(require, "custom")
 local custom_plugins = exist and type(custom) == "table" and custom.plugins or {}
 
 -- Check if there is any custom plugins
 -- local ok, custom_plugins = pcall(require, "plugins.custom")
 require("lazy").setup {
-  spec = { builtin_plugins, custom_plugins },
+  spec = { builtin_plugins, colorscheme_plugins, custom_plugins },
   lockfile = vim.fn.stdpath "config" .. "/lazy-lock.json", -- lockfile generated after running update.
   defaults = {
     lazy = false,                                          -- should plugins be lazy-loaded?

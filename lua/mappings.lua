@@ -63,6 +63,7 @@ map("n", "<leader>.", function() ui.nav_file(2) end)
 map("n", "<leader>/", function() ui.nav_file(3) end)
 
 map("n", "<leader>c", vim.cmd.Git)
+map("n", "<leader>p", vim.cmd.Git('pull'))
 
 -- Reload configuration without restart nvim
 -- Or you don't want to use plenary.nvim, you can use this code
