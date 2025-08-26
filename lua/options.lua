@@ -141,6 +141,14 @@ vim.api.nvim_set_hl(0, "CursorLine", { bg = "#262626" })
 vim.api.nvim_set_hl(0, "StatusLine", { bg = "#262626", fg = "#908caa" })
 vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "#262626", fg = "#797593" })
 
+for _, group in ipairs(vim.fn.getcompletion('', 'highlight')) do
+  local hl = vim.api.nvim_get_hl(0, { name = group })
+  if hl.italic then
+    hl.italic = false
+    vim.api.nvim_set_hl(0, group, hl)
+  end
+end
+
 -- Enable virtual_lines feature if the current nvim version is 0.11+
 if vim.fn.has "nvim-0.11" > 0 then
   vim.diagnostic.config {
