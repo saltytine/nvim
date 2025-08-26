@@ -24,11 +24,11 @@ local builtin_plugins = {
     },
   },
   -- Git integration for buffers
-  {
-    "lewis6991/gitsigns.nvim",
-    event = { "BufReadPost", "BufNewFile", "BufWritePost" },
-    opts = function() require "plugins.configs.gitsigns" end,
-  },
+  -- {
+  --   "lewis6991/gitsigns.nvim",
+  --   event = { "BufReadPost", "BufNewFile", "BufWritePost" },
+  --   opts = function() require "plugins.configs.gitsigns" end,
+  -- },
     -- Treesitter interface
   {
     "nvim-treesitter/nvim-treesitter",
