@@ -8,7 +8,7 @@ local indent = 4
 g.mapleader = " "
 
 cmd [[
-	filetype plugin indent on
+ filetype plugin indent on
 ]]
 
 opt.guicursor = "a:block"
@@ -34,7 +34,8 @@ opt.shiftround = true    -- use multiple of shiftwidth when indenting with "<" a
 opt.showtabline = 0 -- always show tabs
 opt.sessionoptions = "curdir,folds,globals,help,tabpages,terminal,winsize"
 -- search
-opt.hlsearch = true   -- highlight all matches on previous search pattern
+opt.hlsearch = false   -- highlight all matches on previous search pattern
+opt.incsearch = true
 opt.ignorecase = true -- ignore case in search patterns
 opt.smartcase = true  -- smart case
 opt.wildignore = opt.wildignore + { "*/node_modules/*", "*/.git/*", "*/vendor/*" }
@@ -58,7 +59,7 @@ opt.cmdheight = 1      -- more space in the neovim command line for displaying m
 
 opt.mouse = "a"        -- allow the mouse to be used in neovim
 opt.number = true      -- set numbered lines
-opt.scrolloff = 18     -- minimal number of screen lines to keep above and below the cursor
+opt.scrolloff = 8     -- minimal number of screen lines to keep above and below the cursor
 opt.sidescrolloff = 3  -- minimal number of screen columns to keep to the left and right (horizontal) of the cursor if wrap is `false`
 opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
 opt.splitbelow = true  -- open new split below

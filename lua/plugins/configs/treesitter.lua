@@ -16,6 +16,10 @@ return {
         "css",
         "vim",
         "lua",
+        "c",
+        "swift",
+        "rust",
+        "javascript"
         ensure_installed,
     },
 

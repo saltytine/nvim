@@ -3,6 +3,8 @@ local builtin_plugins = {
   { "nvim-lua/plenary.nvim" },
   { "saltytine/todo-by-file" },
   { "saltytine/marked" },
+  { "theprimeagen/harpoon" },
+  { "tpope/vim-fugitive" },
   -- File explore
   -- nvim-tree.lua - A file explorer tree for neovim written in lua
   -- {
