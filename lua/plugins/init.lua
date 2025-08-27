@@ -3,6 +3,19 @@ local builtin_plugins = {
   { "nvim-lua/plenary.nvim" },
   { "saltytine/todo-by-file" },
   { "saltytine/marked" },
+  {
+    "saltytine/xwrap.nvim",
+    config = function()
+      require("xwrap").setup()
+    end,
+  },
+  {
+    "saltytine/typestats.nvim",
+    name = "typestats",
+    config = function()
+      vim.o.statusline = "%f %h%m%r %=%{v:lua.TypeStats.statusline()}"
+    end,
+  },
   { "theprimeagen/harpoon" },
   { "tpope/vim-fugitive" },
   { "Eandrju/cellular-automaton.nvim" },
@@ -22,18 +35,25 @@ local builtin_plugins = {
     config = function()
       local sm = require("supermaven-nvim")
       local api = require("supermaven-nvim.api")
-      local cmp = require("cmp")
+      -- local cmp = require("cmp")
 
       sm.setup({})
+
+      -- local cmp_enabled = true
+      -- cmp.setup({
+      --   enabled = function()
+      --     return cmp_enabled
+      --   end,
+      -- })
 
       vim.api.nvim_create_user_command("Ap", function()
         if api.is_running() then
           api.stop()
-          cmp.setup.buffer({ enabled = true })
+          -- cmp_enabled = true
           print("SuperMaven disabled, cmp enabled")
         else
           api.start()
-          cmp.setup.buffer({ enabled = false })
+          -- cmp_enabled = false
           print("SuperMaven enabled, cmp disabled")
         end
       end, {})
