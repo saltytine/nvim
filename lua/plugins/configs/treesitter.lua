@@ -19,7 +19,7 @@ return {
         "c",
         "swift",
         "rust",
-        "javascript"
+        "javascript",
         ensure_installed,
     },
 

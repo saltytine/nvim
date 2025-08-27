@@ -40,9 +40,9 @@ map("n", "<leader>r", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], {})
 map("v", "<Tab>", ">gv", {})
 map("v", "<leader><Tab>", "<gv", {})
 map("n", "<leader><Up>", "gg0", {})
-map("n", "<leader><Down>", "G$", {})
+map("n", "<leader><Down>", "G", {})
 map("v", "<leader><Up>", "gg0", {})
-map("v", "<leader><Down>", "G$", {})
+map("v", "<leader><Down>", "G", {})
 map("v", "<A-Up>", ":m '<-2<CR>gv=gv", {})
 map("v", "<A-Down>", ":m '>+1<CR>gv=gv", {})
 map("n", "<C-w>", "@w", {})
@@ -52,6 +52,7 @@ map("n", "<leader>=", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 map("n", "<leader>-", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 map("n", "<leader>==", "<cmd>vertical resize +5<CR>", { desc = "Increase window width" })
 map("n", "<leader>--", "<cmd>vertical resize -5<CR>", { desc = "Decrease window width" })
+map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
@@ -63,7 +64,6 @@ map("n", "<leader>.", function() ui.nav_file(2) end)
 map("n", "<leader>/", function() ui.nav_file(3) end)
 
 map("n", "<leader>c", vim.cmd.Git)
-map("n", "<leader>p", vim.cmd.Git('pull'))
 
 -- Reload configuration without restart nvim
 -- Or you don't want to use plenary.nvim, you can use this code
@@ -116,3 +116,5 @@ map("n", "tt", function()
   local height = math.floor(vim.o.lines / 2)
   cmd("belowright split | resize " .. height .. " | terminal")
 end, { noremap = true, silent = true })
+
+map("n", "<leader>ca", function() require("cellular-automaton").start_animation("make_it_rain") end)

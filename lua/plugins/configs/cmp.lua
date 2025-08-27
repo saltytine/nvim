@@ -96,6 +96,7 @@ local options = {
     },
     sources = {
         { name = "nvim_lsp" },
+        -- { name = "supermaven" },
         { name = "luasnip" },
         {
             name = "buffer",

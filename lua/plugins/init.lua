@@ -5,6 +5,7 @@ local builtin_plugins = {
   { "saltytine/marked" },
   { "theprimeagen/harpoon" },
   { "tpope/vim-fugitive" },
+  { "Eandrju/cellular-automaton.nvim" },
   {
     "toppair/peek.nvim",
     event = { "VeryLazy" },
@@ -19,7 +20,23 @@ local builtin_plugins = {
   {
     "supermaven-inc/supermaven-nvim",
     config = function()
-      require("supermaven-nvim").setup({})
+      local sm = require("supermaven-nvim")
+      local api = require("supermaven-nvim.api")
+      local cmp = require("cmp")
+
+      sm.setup({})
+
+      vim.api.nvim_create_user_command("Ap", function()
+        if api.is_running() then
+          api.stop()
+          cmp.setup.buffer({ enabled = true })
+          print("SuperMaven disabled, cmp enabled")
+        else
+          api.start()
+          cmp.setup.buffer({ enabled = false })
+          print("SuperMaven enabled, cmp disabled")
+        end
+      end, {})
     end,
   },
 
@@ -52,7 +69,7 @@ local builtin_plugins = {
     "nvim-treesitter/nvim-treesitter",
     version = false, -- last release is way too old and doesn't work on Windows
     evevent = { "BufReadPost", "BufNewFile", "BufWritePost" },
-    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    cmd = { "TSInstall", "TSUpdate", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
     opts = function() require "plugins.configs.treesitter" end,
   },
@@ -130,8 +147,6 @@ local builtin_plugins = {
         end,
       },
 
-      -- autopairing of (){}[] etc
-      { "windwp/nvim-autopairs" },
 
       -- cmp sources plugins
       {
@@ -144,6 +159,12 @@ local builtin_plugins = {
       },
     },
     opts = function() require "plugins.configs.cmp" end,
+  },
+  -- autopairing of (){}[] etc
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function() require ("nvim-autopairs").setup ({}) end,
   },
   -- Colorizer
   {
