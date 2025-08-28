@@ -13,7 +13,7 @@ local builtin_plugins = {
     "saltytine/typestats.nvim",
     name = "typestats",
     config = function()
-      vim.o.statusline = "%f %h%m%r %=%{v:lua.TypeStats.statusline()}"
+      vim.o.statusline = "%f %h%m%r %=%{v:lua.TypeStats.statusline()} %l,%c %p%%"
     end,
   },
   { "theprimeagen/harpoon" },
@@ -35,25 +35,25 @@ local builtin_plugins = {
     config = function()
       local sm = require("supermaven-nvim")
       local api = require("supermaven-nvim.api")
-      -- local cmp = require("cmp")
+      local cmp = require("cmp")
 
       sm.setup({})
 
-      -- local cmp_enabled = true
-      -- cmp.setup({
-      --   enabled = function()
-      --     return cmp_enabled
-      --   end,
-      -- })
+      local cmp_enabled = true
+      cmp.setup({
+        enabled = function()
+          return cmp_enabled
+        end,
+      })
 
       vim.api.nvim_create_user_command("Ap", function()
         if api.is_running() then
           api.stop()
-          -- cmp_enabled = true
+          cmp_enabled = true
           print("SuperMaven disabled, cmp enabled")
         else
           api.start()
-          -- cmp_enabled = false
+          cmp_enabled = false
           print("SuperMaven enabled, cmp disabled")
         end
       end, {})
