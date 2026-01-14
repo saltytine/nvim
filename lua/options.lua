@@ -43,6 +43,7 @@ opt.wildmenu = true   -- make tab completion for files/buffers act like bash
 
 -- ui
 opt.cursorline = false -- highlight the current line
+opt.colorcolumn = "80" -- colorcolumn
 opt.laststatus = 2     -- only the last window will always have a status line
 opt.lazyredraw = true  -- don"t update the display while executing macros
 opt.list = true
@@ -63,7 +64,7 @@ opt.number = true      -- set numbered lines
 opt.scrolloff = 8      -- _en lines to keep above and below the cur
 opt.sidescrolloff = 3  -- minimal number of screen columns to keep to the left and right (horizontal) of the cursor if wrap is `false`
 opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
-opt.splitbelow = true  -- open new split below
+opt.splitbelow = false  -- open new split below
 opt.splitright = true  -- open new split to the right
 opt.wrap = true        -- display a wrapped line
 
