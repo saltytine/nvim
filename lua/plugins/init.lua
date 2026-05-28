@@ -47,15 +47,8 @@ local builtin_plugins = {
       })
 
       vim.api.nvim_create_user_command("Ap", function()
-        if api.is_running() then
-          api.stop()
-          cmp_enabled = true
-          print("SuperMaven disabled, cmp enabled")
-        else
-          api.start()
-          cmp_enabled = false
-          print("SuperMaven enabled, cmp disabled")
-        end
+        api.start()
+        cmp_enabled = false
       end, {})
     end,
   },
