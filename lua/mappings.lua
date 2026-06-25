@@ -61,9 +61,9 @@ local ui = require("harpoon.ui")
 
 map("n", "<leader>a", mark.add_file)
 map("n", "<leader>w", ui.toggle_quick_menu)
-map("n", "<leader>,", function() ui.nav_file(1) end)
-map("n", "<leader>.", function() ui.nav_file(2) end)
-map("n", "<leader>/", function() ui.nav_file(3) end)
+map("n", "m", function() ui.nav_file(1) end)
+map("n", ",", function() ui.nav_file(2) end)
+map("n", ".", function() ui.nav_file(3) end)
 
 map("n", "<leader>c", vim.cmd.Git)
 
