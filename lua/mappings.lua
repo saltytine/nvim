@@ -56,15 +56,14 @@ map("n", "<leader>=", "<cmd>vertical resize +5<CR>", { desc = "Increase window w
 map("n", "<leader>-", "<cmd>vertical resize -5<CR>", { desc = "Decrease window width" })
 map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-local mark = require("harpoon.mark")
-local ui = require("harpoon.ui")
+local harpoon = require("harpoon")
 
-map("n", "<leader>a", mark.add_file)
-map("n", "<leader>w", ui.toggle_quick_menu)
-map("n", "m", function() ui.nav_file(1) end)
-map("n", ",", function() ui.nav_file(2) end)
-map("n", ".", function() ui.nav_file(3) end)
+harpoon:setup()
 
+map("n", "<leader>a", function() harpoon:list():add() end)
+map("n", "<leader>w", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+map("n", ",", function() harpoon:list():prev() end)
+map("n", ".", function() harpoon:list():next() end)
 map("n", "<leader>c", vim.cmd.Git)
 
 -- Reload configuration without restart nvim

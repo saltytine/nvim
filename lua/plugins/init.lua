@@ -16,7 +16,11 @@ local builtin_plugins = {
       vim.o.statusline = "%f %h%m%r %=%{v:lua.TypeStats.statusline()} %l,%c %p%%"
     end,
   },
-  { "theprimeagen/harpoon" },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
   { "tpope/vim-fugitive" },
   { "Eandrju/cellular-automaton.nvim" },
   {
